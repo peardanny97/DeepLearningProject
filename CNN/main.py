@@ -48,14 +48,14 @@ initial_mobile_model.summary()
 initial_mobile_model.compile(optimizer=tf.keras.optimizers.Adam(0.001),
                       loss='binary_crossentropy', metrics=['accuracy'])
 
-checkpoint = ModelCheckpoint("/Users/bang/Desktop/DL_Project/DeepLearningProject/CNN/ckpt",
+checkpoint = ModelCheckpoint("./ckpt",
                              monitor="val_accuracy", save_best_only=True, verbose=1)
 
 earlystop = EarlyStopping(monitor="val_acc", patience=5, verbose=1)
 
 history = initial_mobile_model.fit(train, epochs=1, validation_data=test, callbacks=[checkpoint, earlystop])
 
-initial_mobile_model.save('/Users/bang/Desktop/DL_Project/DeepLearningProject/CNN/initial_mobile_model')
+initial_mobile_model.save('./initial_mobile_model')
 # initial_model = keras.models.Sequential([
 #     Conv2D(input_shape=(256, 256, 3), filters=32, kernel_size=(3,3), padding="Same",
 #            activation='relu', kernel_initializer='he_uniform'),
